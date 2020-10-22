@@ -50,6 +50,7 @@ interface YuanShenPool {
         override val normalFour = arrayOf("砂糖","重云","诺艾尔","班尼特","菲谢尔","凝光","行秋","北斗","香菱","雷泽","芭芭拉","弓藏","绝弦","西风猎弓","昭心","流浪乐章","西风秘典","西风长枪","雨裁","钟剑","西风大剑","匣里龙吟","笛剑","西风剑")
 
         override val upFloor = 0.75
+        override val fiveFloor = 80
     }
 }
 
