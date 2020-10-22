@@ -37,7 +37,8 @@ class CardService {
     operator fun UserRecord.invoke(): YuanShenSettle {
         val pool = getPool()!!
         fiveFloor++
-        if (fiveFloor == pool.fiveFloor) {
+        fourFloor++
+        if (fiveFloor >= pool.fiveFloor) {
             fiveFloor = 0
             return if (pool.upFloor != null) {
                 if (upFive) {
@@ -52,8 +53,7 @@ class CardService {
                 }
             } else YuanShenSettle(4, fiveFloor, pool, true, isUp = false)
         }
-        fourFloor++
-        if (fourFloor == pool.fourFloor) {
+        if (fourFloor >= pool.fourFloor) {
             fourFloor = 0
             return if (pool.upFloor != null) {
                 if (upFour) {
