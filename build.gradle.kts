@@ -8,12 +8,11 @@ buildscript {
 }
 
 plugins {
-    java
+    kotlin("jvm") version "1.4.10"
     id("com.github.johnrengelman.shadow") version "5.2.0"
-    eclipse
 }
 
-group = "org.example"
+group = "com.IceCreamQAQ.bot.yuanShen"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -27,10 +26,15 @@ repositories {
     // 需要同时启用 中央库 及 jcenter。
     mavenCentral()
     jcenter()
+    maven("https://maven.IceCreamQAQ.com/repository/maven-public/")
 }
 
 dependencies {
-    implementation("com.IceCreamQAQ.YuQ:YuQ-Mirai:0.0.6.10")
+    implementation("com.IceCreamQAQ.YuQ:YuQ-Mirai:0.1.0.0-DEV1")
+    implementation("com.IceCreamQAQ.Yu:Yu-DB:0.0.1.0"){
+        exclude("mysql","mysql-connector-java")
+    }
+    implementation("com.h2database:h2:1.4.200")
 }
 
 tasks {
@@ -41,7 +45,7 @@ tasks {
 
     shadowJar {
         manifest {
-            attributes["Main-Class"] = "wiki.IceCream.yuq.demo.Start"
+            attributes["Main-Class"] = "com.IceCreamQAQ.bot.yuanShen.StartKt"
         }
 
         from("./") {

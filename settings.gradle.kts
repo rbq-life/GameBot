@@ -1,2 +1,2 @@
-rootProject.name = "YuQ-Mirai-Demo"
+rootProject.name = "YuanShenBot"
 

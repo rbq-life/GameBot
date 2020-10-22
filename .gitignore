@@ -7,6 +7,8 @@ target/
 
 tmp/
 log/
-src/main/resources/conf/test**
+src/main/resources/conf/**/**
+
+db/
 
 *.iml

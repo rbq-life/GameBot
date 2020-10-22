@@ -1,47 +1,31 @@
-# YuQ-Mirai
+《原神》模拟抽卡机器人。
 
-YuQ-Mirai 是一个依赖于 [Mirai-Rain](https://github.com/YuQWorks/Mirai-Rain) 的 YuQ Framework 的机器人实现。
+基于 [YuQ](https://github.com/YuQWorks/YuQ) 开发。
 
-YuQ Framework 的目的就是让机器人开发变得更简单和更有效率。
-
-这是一个 Demo 项目。  
-框架依旧处于开发阶段，我将尽可能的保证 API 尽量少的变动。
-
-##
-
-Demo 同时提供了 Maven 和 Gradle 的项目配置。  
-请选择一个喜欢的使用。
-
-##
-
-Gradle 下载默认采用了 冰糕Luminous 提供的镜像地址。  
-如果想采用官方地址下载，请修改 `./gradle/wapper/gradle-wrapper.properties` 文件内的相应值。
-
-## 特性
-
-### 路由映射
-参考 wiki.IceCream.yuq.demo.controller.TestGroupController
-### 依赖注入
-参考 wiki.IceCream.yuq.demo.controller.TestGroupController
-### 事件系统
-参考 wiki.IceCream.yuq.demo.event.OnMessageEvent
-### 后台队列
-参考 wiki.IceCream.yuq.demo.job.JobMain
-### 数据库支持
-使用方法参考 [SuperDemo](https://github.com/YuQWorks/YuQ-SuperDemo)
-### Web支持
-使用方法参考 [SuperDemo](https://github.com/YuQWorks/YuQ-SuperDemo)
-## 使用方法：
-clone  
-编辑 /src/main/resource/conf/YuQ.properties 填写合适的内容。  
-run wiki.IceCream.yuq.demo.Start  
-
-YuQ-Mirai 可直接启动，无需任何外部手段/依赖。
-
-打包：
+指令：
 ```
+可莉十连
+可莉单抽
+
+狼末十连
+狼末单抽
+
+标配十连
+标配单抽
+```
+
+食用方法：
+```
+clone。
+编辑 ./src/main/resource/conf/bot.properties。
+填写 QQ 账号与 QQ 密码。
 ./gradlew build
+java -jar ./build/libs/YuanShenBot-1.0-SNAPSHOT-all.jar
 ```
-对于 Eclipse 用户，可以考虑使用 `./gradlew eclipse` 命令生成 Eclipse 项目。
 
-更详细的使用文档：[文档](https://yuqworks.github.io/YuQ-Doc/)
+免责声明：
+```
+机器人所涉及的所有抽卡几率均为《原神》官方公示数据。
+机器人卡池内容版权及著作权属于《原神官方》。
+模拟抽卡数据仅供参考娱乐，作者对任何使用者不承担任何责任。
+```
