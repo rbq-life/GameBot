@@ -1,6 +1,6 @@
-package com.IceCreamQAQ.bot.yuanShen.dao
+package com.IceCreamQAQ.bot.game.dao
 
-import com.IceCreamQAQ.bot.yuanShen.entity.UserRecord
+import com.IceCreamQAQ.bot.game.entity.UserRecord
 import com.icecreamqaq.yudb.jpa.hibernate.HibernateDao
 
 class UserRecordDao : HibernateDao<UserRecord, Int>() {

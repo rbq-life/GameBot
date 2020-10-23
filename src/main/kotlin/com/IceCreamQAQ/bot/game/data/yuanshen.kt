@@ -1,16 +1,12 @@
-package com.IceCreamQAQ.bot.yuanShen.data
+package com.IceCreamQAQ.bot.game.data
 
-import com.IceCreamQAQ.Yu.loader.LoadItem
-import com.IceCreamQAQ.Yu.loader.Loader
+interface YuanShenPool:CardPool {
 
-interface YuanShenPool {
-    val name: String
-
-    val upFive: YuanShenPrizePool
-    val normalFive: YuanShenPrizePool
-    val upFour: YuanShenPrizePool
-    val normalFour: YuanShenPrizePool
-    val rubbish: YuanShenPrizePool
+    val upFive: LevelPrizePool
+    val normalFive: LevelPrizePool
+    val upFour: LevelPrizePool
+    val normalFour: LevelPrizePool
+    val rubbish: LevelPrizePool
         get() = arrayOf("弹弓", "神射手之誓", "鸦羽弓", "翡玉法球", "讨龙英杰谭", "魔导绪论", "黑缨枪", "以理服人", "沐浴龙血的剑", "铁影阔剑", "飞天御剑", "黎明神剑", "冷刃")
 
     val fiveFloor: Int
@@ -20,8 +16,31 @@ interface YuanShenPool {
     val upFloor: Double?
         get() = null
 
+    val fiveProbability
+        get() = 0.006
+    val fourProbability
+        get() = 0.051
+
+    override operator fun invoke(result: CardSettle): String {
+        val level = result.level
+        val pp = when (level) {
+            5 -> upFive
+            4 -> normalFive
+            3 -> upFour
+            2 -> normalFour
+            else -> rubbish
+        }()
+        return when {
+            level > 3 -> "--------------------\n" +
+                    "|| 金: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""}\n" +
+                    "--------------------"
+            level > 1 -> "++ 紫: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""} "
+            else -> "-- 蓝: $pp"
+        }
+    }
+
     object NormalPool : YuanShenPool{
-        override val name = "标配"
+        override val name = "原神"
 
         override val upFive = arrayOf("")
         override val upFour = arrayOf("")
@@ -51,39 +70,11 @@ interface YuanShenPool {
 
         override val upFloor = 0.75
         override val fiveFloor = 80
+
+        override val fiveProbability = 0.007
+        override val fourProbability = 0.06
     }
 }
-
-typealias YuanShenPrizePool = Array<String>
-
-operator fun YuanShenPrizePool.invoke() = get((Math.random() * size).toInt())
-
-operator fun YuanShenPool.invoke(result: YuanShenSettle): String {
-    val level = result.level
-    val pp = when (level) {
-        5 -> upFive
-        4 -> normalFive
-        3 -> upFour
-        2 -> normalFour
-        else -> rubbish
-    }()
-    return when {
-        level > 3 -> "--------------------\n" +
-                "|| 金: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""}\n" +
-                "--------------------"
-        level > 1 -> "++ 紫: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""} "
-        else -> "-- 蓝: $pp"
-    }
-}
-
-data class YuanShenSettle(
-        val level: Int,
-        val count: Int,
-        val pool: YuanShenPool,
-        val isFloor: Boolean,
-        val isUp: Boolean,
-)
-
 
 object YuanShenPools : MutableMap<String, YuanShenPool> by HashMap() {
 

@@ -19,6 +19,8 @@ repositories {
     // Gradle 的 扫包是从上至下的，按照当前顺序，则为： 冰糕Luminous的仓库 -> 阿里云的仓库 -> 中央库 -> jcenter
     // YuQ-Mirai 的依赖位于中央库和 jcenter。
 
+    mavenLocal()
+
     // 这是由 冰糕Luminous 提供的 Maven 仓库镜像。
     maven("https://oss.heavenark.com/repository/MavenPublic/")
     // 这是由 阿里云 提供的 Maven 仓库镜像。
@@ -30,6 +32,7 @@ repositories {
 }
 
 dependencies {
+    implementation("com.IceCreamQAQ:YuQ:0.1.0.0-DEV2")
     implementation("com.IceCreamQAQ.YuQ:YuQ-Mirai:0.1.0.0-DEV1")
     implementation("com.IceCreamQAQ.Yu:Yu-DB:0.0.1.0"){
         exclude("mysql","mysql-connector-java")

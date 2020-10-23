@@ -1,6 +1,6 @@
-package com.IceCreamQAQ.bot.yuanShen.entity
+package com.IceCreamQAQ.bot.game.entity
 
-import com.IceCreamQAQ.bot.yuanShen.data.YuanShenPools
+import com.IceCreamQAQ.bot.game.data.YuanShenPools
 import javax.persistence.*
 
 @Entity
@@ -23,9 +23,9 @@ data class UserRecord(
         @Column
         var fiveFloor: Int = 0,
         @Column
+        var sixFloor: Int = 0,
+        @Column
         var upFive: Boolean = false,
         @Column
         var upFour: Boolean = false
 )
-
-fun UserRecord.getPool() = YuanShenPools[this.pool]

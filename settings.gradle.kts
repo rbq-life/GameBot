@@ -1,2 +1,2 @@
-rootProject.name = "YuanShenBot"
+rootProject.name = "GameBot"
 

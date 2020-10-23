@@ -1,4 +1,4 @@
-package com.IceCreamQAQ.bot.yuanShen
+package com.IceCreamQAQ.bot.game
 
 import com.icecreamqaq.yuq.mirai.YuQMiraiStart
 
