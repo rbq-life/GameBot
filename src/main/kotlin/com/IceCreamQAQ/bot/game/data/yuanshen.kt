@@ -30,12 +30,14 @@ interface YuanShenPool:CardPool {
             2 -> normalFour
             else -> rubbish
         }()
-        return when {
-            level > 3 -> "--------------------\n" +
-                    "|| 金: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""}\n" +
-                    "--------------------"
-            level > 1 -> "++ 紫: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""} "
-            else -> "-- 蓝: $pp"
+        return with(result){
+            when {
+                level > 3 -> "--------------------\n" +
+                        "|| 金: $pp (${if (isFloor) "保底" else count})${if (isUp) " (大保底)" else ""}\n" +
+                        "--------------------"
+                level > 1 -> "++ 紫: $pp (${if (isFloor) "保底" else count})${if (isUp) " (大保底)" else ""} "
+                else -> "-- 蓝: $pp"
+            }
         }
     }
 

@@ -34,14 +34,15 @@ interface ArkNightsPool : CardPool {
             2 -> normalFour
             else -> rubbish
         }()
-        return when {
-            level > 5 -> "--------------------\n" +
-                    "|| 金: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""}\n" +
-                    "--------------------"
-            level > 3 -> "++ 紫: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""} "
-            level > 1 -> "-- 蓝: $pp (${if (result.isFloor) "保底" else result.count})${if (result.isUp) " (大保底)" else ""} "
-            else -> "^^白: $pp"
+        return with(result) {
+            when {
+                level > 5 -> "⭐️⭐️⭐️⭐️⭐️⭐️ $pp ($count)"
+                level > 3 -> "✨✨✨✨✨ $pp ($count)"
+                level > 1 -> "★★★★ $pp ($count)"
+                else -> "☆☆☆ $pp"
+            }
         }
+
     }
 
     object NormalPool : ArkNightsPool {
