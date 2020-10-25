@@ -2,6 +2,8 @@ package com.IceCreamQAQ.bot.game.data
 
 interface ArkNightsPool : CardPool {
 
+    val description: String?
+
     val sixProbability
         get() = 0.02
     val fiveProbability
@@ -51,6 +53,8 @@ interface ArkNightsPool : CardPool {
     object NormalPool : ArkNightsPool {
 
         override val name = "方舟"
+        override val description: String?
+            get() = null
 
         override val upSix = arrayOf("")
         override val upFive = arrayOf("")
@@ -74,6 +78,8 @@ interface ArkNightsPool : CardPool {
 
 
         override val name = "常驻"
+        override val description: String?
+            get() = "10月15日04:00~10月29日03:59"
 
         override val upSix = arrayOf("傀影","推进之王")
         override val upFive = arrayOf("梅尔", "格劳克斯","狮蝎")
@@ -97,6 +103,8 @@ interface ArkNightsPool : CardPool {
             get() = 0.5
 
         override val name = "搅动潮汐之剑"
+        override val description: String?
+            get() = "只是一个up池测试"
 
         override val upSix = arrayOf("斯卡蒂")
         override val upFive = arrayOf("夜魔", "临光")
@@ -118,7 +126,8 @@ interface ArkNightsPool : CardPool {
             get() = 0.5
 
         override val name = "瑕光微明"
-
+        override val description: String?
+            get() = "活动时间：10月15日 16:00 - 10月29日 03:59"
         override val upSix = arrayOf("瑕光")
         override val upFive = arrayOf("奥斯塔", "白金")
         override val upFour = arrayOf("泡泡")
@@ -139,7 +148,8 @@ interface ArkNightsPool : CardPool {
             get() = 0.2
 
         override val name = "勿忘我"
-
+        override val description: String?
+            get() = "活动时间:11月01日 16:00 - 11月15日 03:59"
         override val upSix = arrayOf("迷迭香 [限定]","泥岩")
         override val upFive = arrayOf("絮雨")
         override val upFour = arrayOf("杰克")
