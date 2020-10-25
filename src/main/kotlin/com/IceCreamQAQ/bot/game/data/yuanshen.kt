@@ -1,6 +1,6 @@
 package com.IceCreamQAQ.bot.game.data
 
-interface YuanShenPool:CardPool {
+interface YuanShenPool : CardPool {
 
     val upFive: LevelPrizePool
     val normalFive: LevelPrizePool
@@ -30,7 +30,7 @@ interface YuanShenPool:CardPool {
             2 -> normalFour
             else -> rubbish
         }()
-        return with(result){
+        return with(result) {
             when {
                 level > 3 -> "--------------------\n" +
                         "|| 金: $pp (${if (isFloor) "保底" else count})${if (isUp) " (大保底)" else ""}\n" +
@@ -41,14 +41,14 @@ interface YuanShenPool:CardPool {
         }
     }
 
-    object NormalPool : YuanShenPool{
+    object NormalPool : YuanShenPool {
         override val name = "原神"
 
         override val upFive = arrayOf("")
         override val upFour = arrayOf("")
 
-        override val normalFive = arrayOf("刻晴","莫娜","七七","迪卢克","琴","阿莫斯之弓","天空之翼","四风原典","天空之卷","和璞鸢","天空之脊","狼的末路","天空之傲","天空之刃","风鹰剑")
-        override val normalFour = arrayOf("砂糖","重云","诺艾尔","班尼特","菲谢尔","凝光","行秋","北斗","香菱","安柏","雷泽","凯亚","芭芭拉","丽莎","弓藏","祭礼弓","绝弦","西风猎弓","昭心","祭礼残章","流浪乐章","西风秘典","西风长枪","匣里灭辰","雨裁","祭礼大剑","钟剑","西风大剑","匣里龙吟","祭礼剑","笛剑","西风剑")
+        override val normalFive = arrayOf("刻晴", "莫娜", "七七", "迪卢克", "琴", "阿莫斯之弓", "天空之翼", "四风原典", "天空之卷", "和璞鸢", "天空之脊", "狼的末路", "天空之傲", "天空之刃", "风鹰剑")
+        override val normalFour = arrayOf("砂糖", "重云", "诺艾尔", "班尼特", "菲谢尔", "凝光", "行秋", "北斗", "香菱", "安柏", "雷泽", "凯亚", "芭芭拉", "丽莎", "弓藏", "祭礼弓", "绝弦", "西风猎弓", "昭心", "祭礼残章", "流浪乐章", "西风秘典", "西风长枪", "匣里灭辰", "雨裁", "祭礼大剑", "钟剑", "西风大剑", "匣里龙吟", "祭礼剑", "笛剑", "西风剑")
     }
 
     object KeLiPool : YuanShenPool {
@@ -67,8 +67,8 @@ interface YuanShenPool:CardPool {
 
         override val upFive = arrayOf("四风原典", "狼的末路")
         override val normalFive = arrayOf("阿莫斯之弓", "天空之翼", "天空之卷", "天空之脊", "天空之傲", "天空之刃", "风鹰剑")
-        override val upFour = arrayOf("祭礼弓","祭礼残章","匣里灭辰","祭礼大剑","祭礼剑")
-        override val normalFour = arrayOf("砂糖","重云","诺艾尔","班尼特","菲谢尔","凝光","行秋","北斗","香菱","雷泽","芭芭拉","弓藏","绝弦","西风猎弓","昭心","流浪乐章","西风秘典","西风长枪","雨裁","钟剑","西风大剑","匣里龙吟","笛剑","西风剑")
+        override val upFour = arrayOf("祭礼弓", "祭礼残章", "匣里灭辰", "祭礼大剑", "祭礼剑")
+        override val normalFour = arrayOf("砂糖", "重云", "诺艾尔", "班尼特", "菲谢尔", "凝光", "行秋", "北斗", "香菱", "雷泽", "芭芭拉", "弓藏", "绝弦", "西风猎弓", "昭心", "流浪乐章", "西风秘典", "西风长枪", "雨裁", "钟剑", "西风大剑", "匣里龙吟", "笛剑", "西风剑")
 
         override val upFloor = 0.75
         override val fiveFloor = 80

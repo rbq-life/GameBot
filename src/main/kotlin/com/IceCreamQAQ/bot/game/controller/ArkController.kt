@@ -26,10 +26,11 @@ class ArkController {
         val p = ArkPools[pool] ?: throw SkipMe()
         return try {
             val l = qq(p)(10)
-            val sb = StringBuilder(ArkPools[pool]?.description+"\n您的十连抽卡结果为：")
+            val sb = StringBuilder( "您的十连抽卡结果为：")
             for (s in l) {
                 sb.append("\n").append(s)
             }
+            p.description?.let { sb.append("\n").append(it) }
             sb.toString()
         } catch (ex: Exception) {
             ex.printStackTrace()
@@ -47,6 +48,7 @@ class ArkController {
             for (s in l) {
                 sb.append("\n").append(s)
             }
+            p.description?.let { sb.append("\n").append(it) }
             sb.toString()
         } catch (ex: Exception) {
             ex.printStackTrace()
