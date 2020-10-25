@@ -1,11 +1,8 @@
 package com.IceCreamQAQ.bot.game.controller
 
 import com.IceCreamQAQ.Yu.annotation.Action
-import com.IceCreamQAQ.Yu.annotation.Path
 import com.IceCreamQAQ.bot.game.data.ArkNightsPool
 import com.IceCreamQAQ.bot.game.data.ArkPools
-import com.IceCreamQAQ.bot.game.data.YuanShenPool
-import com.IceCreamQAQ.bot.game.data.YuanShenPools
 import com.IceCreamQAQ.bot.game.entity.UserRecord
 import com.IceCreamQAQ.bot.game.service.ArkService
 import com.icecreamqaq.yuq.annotation.GroupController
@@ -29,7 +26,7 @@ class ArkController {
         val p = ArkPools[pool] ?: throw SkipMe()
         return try {
             val l = qq(p)(10)
-            val sb = StringBuilder("您的十连抽卡结果为：")
+            val sb = StringBuilder(ArkPools[pool]?.description+"\n您的十连抽卡结果为：")
             for (s in l) {
                 sb.append("\n").append(s)
             }
