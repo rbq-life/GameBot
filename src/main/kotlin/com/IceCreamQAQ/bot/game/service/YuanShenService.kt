@@ -1,14 +1,27 @@
 package com.IceCreamQAQ.bot.game.service
 
-import com.IceCreamQAQ.bot.game.dao.UserRecordDao
-import com.IceCreamQAQ.bot.game.data.YuanShenPool
+import com.IceCreamQAQ.bot.game.dao.GameUserDao
 import com.IceCreamQAQ.bot.game.data.YuanShenPools
 import com.IceCreamQAQ.bot.game.data.CardSettle
+import com.IceCreamQAQ.bot.game.entity.GameUser
 import com.IceCreamQAQ.bot.game.entity.UserRecord
 import com.icecreamqaq.yudb.jpa.annotation.Transactional
 import javax.inject.Inject
 
-class YuanShenService: BaseCardService() {
+class YuanShenService : BaseCardService() {
+
+    @Inject
+    private lateinit var gameUserDao: GameUserDao
+
+    @Transactional
+    fun getUid(qq: Long) = gameUserDao.findByQqAndGame(qq, "YuanShen")?.uid
+
+    @Transactional
+    fun setUid(qq: Long, uid: Int) = gameUserDao.save(GameUser(
+            qq = qq,
+            game = "YuanShen",
+            uid = uid
+    ))
 
     override fun UserRecord.getPool() = YuanShenPools[this.pool]
 

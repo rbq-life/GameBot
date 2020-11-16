@@ -32,13 +32,19 @@ repositories {
 }
 
 dependencies {
-    implementation("com.IceCreamQAQ:YuQ:0.1.0.0-DEV3")
-    implementation("com.IceCreamQAQ.YuQ:YuQ-Mirai:0.1.0.0-DEV2")
-    implementation("com.IceCreamQAQ.Yu:Yu-DB:0.0.2.0-DEV2")
+//    implementation("com.IceCreamQAQ:YuQ:0.1.0.0-DEV3")
+    implementation("com.IceCreamQAQ.YuQ:YuQ-Mirai:0.1.0.0-DEV5")
+    implementation("com.IceCreamQAQ.Yu:Yu-DB:0.0.2.0-DEV6")
     implementation("com.h2database:h2:1.4.200")
 }
 
 tasks {
+
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
 
     jar {
         finalizedBy(shadowJar)
