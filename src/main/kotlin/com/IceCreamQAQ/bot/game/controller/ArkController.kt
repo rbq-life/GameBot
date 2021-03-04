@@ -1,6 +1,8 @@
 package com.IceCreamQAQ.bot.game.controller
 
 import com.IceCreamQAQ.Yu.annotation.Action
+import com.IceCreamQAQ.Yu.annotation.Before
+import com.IceCreamQAQ.Yu.annotation.Config
 import com.IceCreamQAQ.bot.game.data.ArkNightsPool
 import com.IceCreamQAQ.bot.game.data.ArkPools
 import com.IceCreamQAQ.bot.game.entity.UserRecord
@@ -18,7 +20,15 @@ class ArkController {
 
 
     @Inject
-    lateinit var ark: ArkService
+    lateinit var service: ArkService
+
+    @Config("com.IceCreamQAQ.GameBot.game.ark")
+    private lateinit var ark: String
+
+    @Before
+    fun i() {
+        if (ark == "false") throw SkipMe()
+    }
 
     @Action("{pool}十连")
     @QMsg(at = true, atNewLine = true)
@@ -56,8 +66,8 @@ class ArkController {
         }
     }
 
-    operator fun Contact.invoke(pool: ArkNightsPool) = ark.getUserRecord(this.id, pool)
+    operator fun Contact.invoke(pool: ArkNightsPool) = service.getUserRecord(this.id, pool)
 
-    operator fun UserRecord.invoke(num: Int) = ark.card(this, num)
+    operator fun UserRecord.invoke(num: Int) = service.card(this, num)
 
 }

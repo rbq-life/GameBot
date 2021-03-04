@@ -28,10 +28,10 @@ abstract class BaseCardService {
     }()
 
     @Transactional
-    fun card(userRecord: UserRecord, num: Int): ArrayList<String> {
-        val pool = userRecord.getPool()!!
-        val list = ArrayList<String>(10)
-        for (i in 0 until num) list.add(pool(userRecord()))
+    fun card(userRecord: UserRecord, num: Int): ArrayList<CardSettle> {
+//        val pool = userRecord.getPool()!!
+        val list = ArrayList<CardSettle>(10)
+        for (i in 0 until num) list.add(userRecord()())
         ud.update(userRecord)
         return list
     }

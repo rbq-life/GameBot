@@ -17,11 +17,18 @@ class YuanShenService : BaseCardService() {
     fun getUid(qq: Long) = gameUserDao.findByQqAndGame(qq, "YuanShen")?.uid
 
     @Transactional
-    fun setUid(qq: Long, uid: Int) = gameUserDao.save(GameUser(
-            qq = qq,
-            game = "YuanShen",
-            uid = uid
-    ))
+    fun setUid(qq: Long, uid: Int) {
+        gameUserDao.findByQqAndGame(qq, "YuanShen")?.let {
+            it.uid = uid
+            gameUserDao.update(it)
+        } ?: gameUserDao.save(
+            GameUser(
+                qq = qq,
+                game = "YuanShen",
+                uid = uid
+            )
+        )
+    }
 
     override fun UserRecord.getPool() = YuanShenPools[this.pool]
 
@@ -60,7 +67,8 @@ class YuanShenService : BaseCardService() {
             } else CardSettle(2, fourFloor, pool, isFloor = true, isUp = false)
         }
         val r = Math.random()
-        return if (r <= pool.fiveProbability) {
+
+        return if (r <= (pool.fiveProbability + (fiveFloor - 73).let { if (it > 0) it * 0.053 else 0.0 })) {
             val c = fiveFloor
             fiveFloor = 0
             if (pool.upFloor == null) CardSettle(4, c, pool, false, isUp = false)
@@ -74,7 +82,7 @@ class YuanShenService : BaseCardService() {
                     CardSettle(4, c, pool, false, isUp = false)
                 } else CardSettle(5, c, pool, isFloor = false, isUp = false)
             }
-        } else if (r <= pool.fourProbability) {
+        } else if (r <= pool.fourProbability + if (fourFloor == 9) 0.51 else 0.0) {
             val c = fourFloor
             fourFloor = 0
             if (pool.upFloor == null) CardSettle(2, c, pool, false, isUp = false)
